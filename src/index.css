@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+:root {
+  font-family: "Manrope", sans-serif;
+  color: #202323;  /* CHANGED: Charcoal instead of #171717 */
+  background: #F6F2E9;  /* CHANGED: Warm Cream instead of #f4f0e9 */
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: #F6F2E9;  /* CHANGED: Warm Cream */
+}
+
+button,
+a {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
