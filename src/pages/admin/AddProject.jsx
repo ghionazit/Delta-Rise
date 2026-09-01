@@ -55,7 +55,6 @@ function AddProject() {
           let width = img.width;
           let height = img.height;
 
-          // Resize large images
           if (width > MAX_WIDTH) {
             height = (height * MAX_WIDTH) / width;
             width = MAX_WIDTH;
@@ -79,7 +78,6 @@ function AddProject() {
             height
           );
 
-          // Compress to JPEG
           const compressedImage = canvas.toDataURL(
             "image/jpeg",
             0.75
@@ -182,19 +180,16 @@ function AddProject() {
 
     setError("");
 
-    // Validate title
     if (!formData.title.trim()) {
       setError("Please enter a project title.");
       return;
     }
 
-    // Validate category
     if (!formData.category) {
       setError("Please select a project category.");
       return;
     }
 
-    // Validate main image
     if (!mainImage) {
       setError("Please upload a main project image.");
       return;
@@ -234,6 +229,11 @@ function AddProject() {
           (image) => image.image
         ),
 
+        // =========================
+        // SELECTED WORK
+        // =========================
+        isSelected: false,
+
         createdAt:
           new Date().toISOString(),
       };
@@ -248,7 +248,6 @@ function AddProject() {
         JSON.stringify(updatedProjects)
       );
 
-      // Success
       navigate("/admin/dashboard");
 
     } catch (err) {
@@ -364,6 +363,7 @@ function AddProject() {
                 <option value="Planning">
                   Planning
                 </option>
+
                 <option value="Aluminum & Metal Works">
                   Aluminum & Metal Works
                 </option>

@@ -2,18 +2,20 @@ import { Routes, Route, useLocation } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import ForgotPassword from "./pages/admin/ForgotPassword";
+import ProtectedRoute from "./components/ProtectedRoute";
+
 import Home from "./pages/Home";
 import Projects from "./pages/Projects";
 import Services from "./pages/Services";
 import About from "./pages/About";
 import ProjectDetails from "./pages/ProjectDetails";
-import AdminSettings from "./pages/admin/AdminSettings";
+
 import AdminLogin from "./pages/admin/AdminLogin";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AddProject from "./pages/admin/AddProject";
 import EditProject from "./pages/admin/EditProject";
-import AdminManagement from "./pages/admin/AdminManagement";
+import AdminSettings from "./pages/admin/AdminSettings";
+import ForgotPassword from "./pages/admin/ForgotPassword";
 
 function App() {
   const location = useLocation();
@@ -40,17 +42,12 @@ function App() {
           ========================= */}
 
           <Route path="/" element={<Home />} />
-            <Route
-          path="/projects/:slug"
-          element={<ProjectDetails />}
-        />
 
           <Route
             path="/projects"
             element={<Projects />}
           />
 
-          {/* SERVICES */}
           <Route
             path="/services"
             element={<Services />}
@@ -60,10 +57,14 @@ function App() {
             path="/about"
             element={<About />}
           />
+          <Route
+           path="/projects/:slug"
+           element={<ProjectDetails />}
+          />
 
 
           {/* =========================
-              ADMIN ROUTES
+              ADMIN LOGIN
           ========================= */}
 
           <Route
@@ -71,33 +72,50 @@ function App() {
             element={<AdminLogin />}
           />
 
+
+          {/* =========================
+              PROTECTED ADMIN ROUTES
+          ========================= */}
+
           <Route
             path="/admin/dashboard"
-            element={<AdminDashboard />}
+            element={
+              <ProtectedRoute>
+                <AdminDashboard />
+              </ProtectedRoute>
+            }
           />
 
           <Route
             path="/admin/add-project"
-            element={<AddProject />}
+            element={
+              <ProtectedRoute>
+                <AddProject />
+              </ProtectedRoute>
+            }
           />
 
           <Route
             path="/admin/edit-project/:id"
-            element={<EditProject />}
+            element={
+              <ProtectedRoute>
+                <EditProject />
+              </ProtectedRoute>
+            }
           />
+
           <Route
-           path="/admin/settings"
-           element={<AdminSettings />}
-         />
+            path="/admin/settings"
+            element={
+              <ProtectedRoute>
+                <AdminSettings />
+              </ProtectedRoute>
+            }
+          />
          <Route
-           path="/admin/forgot-password"
-           element={<ForgotPassword />}
+            path="/admin/forgot-password"
+            element={<ForgotPassword />}
          />
-         <Route
-          path="/admin/admins"
-          element={<AdminManagement />}
-        />
-        
 
         </Routes>
       </main>

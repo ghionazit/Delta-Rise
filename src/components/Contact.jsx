@@ -41,7 +41,7 @@ function Contact() {
               </span>
             </h2>
 
-            <p className="mt-6 max-w-[360px] text-sm leading-6 text-[#F8F5EF]/65 md:text-base">
+            <p className="mt-6 max-w-[360px] text-sm leading-6 text-[#F8F5EF] md:text-base">
               Have a project in mind? Whether you're planning a new
               building, transforming an interior, or need technical
               expertise, we'd love to hear from you.
@@ -54,12 +54,12 @@ function Contact() {
                 href="mailto:info@deltarise.com"
                 className="group flex items-center gap-3"
               >
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[#A8895B]/25 text-[#A8895B] transition-all duration-300 group-hover:bg-[#A8895B] group-hover:text-[#2C0901]">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[#A8895B] text-[#A8895B] transition-all duration-300 group-hover:bg-[#A8895B] group-hover:text-[#2C0901]">
                   <Mail size={16} strokeWidth={1.3} />
                 </div>
 
                 <div>
-                  <p className="text-[9px] uppercase tracking-[0.16em] text-[#F8F5EF]/40">
+                  <p className="text-[9px] uppercase tracking-[0.16em] text-[#F8F5EF]">
                     Email
                   </p>
 
@@ -126,26 +126,26 @@ function Contact() {
               <div className="grid gap-6 md:grid-cols-2">
 
                 <div>
-                  <label className="mb-2 block text-[10px] font-medium uppercase tracking-[0.14em] text-[#6B6862]">
+                  <label className="mb-2 block text-[10px] font-medium uppercase tracking-[0.14em] text-[#0a0906]">
                     Name
                   </label>
 
                   <input
                     type="text"
                     placeholder="Your name"
-                    className="w-full border-b border-[#DED9CF] bg-transparent px-0 py-2.5 text-base text-[#171717] outline-none transition-all duration-300 placeholder:text-[#9A9187] focus:border-[#2C0901]"
+                    className="w-full border-b border-[#DED9CF] bg-transparent px-0 py-2.5 text-base text-[#171717] outline-none transition-all duration-300 placeholder:text-[#0a0906] focus:border-[#2C0901]"
                   />
                 </div>
 
                 <div>
-                  <label className="mb-2 block text-[10px] font-medium uppercase tracking-[0.14em] text-[#6B6862]">
+                  <label className="mb-2 block text-[10px] font-medium uppercase tracking-[0.14em] text-[#0a0906]">
                     Email
                   </label>
 
                   <input
                     type="email"
                     placeholder="Your email"
-                    className="w-full border-b border-[#DED9CF] bg-transparent px-0 py-2.5 text-base text-[#171717] outline-none transition-all duration-300 placeholder:text-[#9A9187] focus:border-[#2C0901]"
+                    className="w-full border-b border-[#DED9CF] bg-transparent px-0 py-2.5 text-base text-[#171717] outline-none transition-all duration-300 placeholder:text-[#0a0906] focus:border-[#2C0901]"
                   />
                 </div>
 
@@ -153,9 +153,9 @@ function Contact() {
 
               {/* Phone */}
               <div>
-                <label className="mb-2 block text-[10px] font-medium uppercase tracking-[0.14em] text-[#6B6862]">
+                <label className="mb-2 block text-[10px] font-medium uppercase tracking-[0.14em] text-[#0a0906]">
                   Phone{" "}
-                  <span className="normal-case tracking-normal text-[#9A9187]">
+                  <span className="normal-case tracking-normal text-[#0a0906]">
                     (optional)
                   </span>
                 </label>
@@ -163,19 +163,19 @@ function Contact() {
                 <input
                   type="tel"
                   placeholder="Your phone number"
-                  className="w-full border-b border-[#DED9CF] bg-transparent px-0 py-2.5 text-base text-[#171717] outline-none transition-all duration-300 placeholder:text-[#9A9187] focus:border-[#2C0901]"
+                  className="w-full border-b border-[#DED9CF] bg-transparent px-0 py-2.5 text-base text-[#171717] outline-none transition-all duration-300 placeholder:text-[#0a0906] focus:border-[#2C0901]"
                 />
               </div>
 
               {/* Project Type */}
               <div>
-                <label className="mb-2 block text-[10px] font-medium uppercase tracking-[0.14em] text-[#6B6862]">
+                <label className="mb-2 block text-[10px] font-medium uppercase tracking-[0.14em] text-[#0a0906]">
                   Project Type
                 </label>
 
                 <select
                   defaultValue=""
-                  className="w-full border-b border-[#DED9CF] bg-transparent px-0 py-2.5 text-base text-[#6B6862] outline-none transition-all duration-300 focus:border-[#2C0901]"
+                  className="w-full border-b border-[#DED9CF] bg-transparent px-0 py-2.5 text-base text-[#0a0906] outline-none transition-all duration-300 focus:border-[#2C0901]"
                 >
                   <option value="" disabled>
                     Select project type
@@ -213,14 +213,14 @@ function Contact() {
 
               {/* Message */}
               <div>
-                <label className="mb-2 block text-[10px] font-medium uppercase tracking-[0.14em] text-[#6B6862]">
+                <label className="mb-2 block text-[10px] font-medium uppercase tracking-[0.14em] text-[#0a0906]">
                   Message
                 </label>
 
                 <textarea
                   rows="4"
                   placeholder="Tell us about your project..."
-                  className="w-full resize-none border-b border-[#DED9CF] bg-transparent px-0 py-2.5 text-base leading-6 text-[#171717] outline-none transition-all duration-300 placeholder:text-[#9A9187] focus:border-[#2C0901]"
+                  className="w-full resize-none border-b border-[#DED9CF] bg-transparent px-0 py-2.5 text-base leading-6 text-[#171717] outline-none transition-all duration-300 placeholder:text-[#0a0906] focus:border-[#2C0901]"
                 />
               </div>
 

@@ -5,6 +5,7 @@ import {
   ArrowRight,
   Mail,
   CheckCircle2,
+  AlertCircle,
 } from "lucide-react";
 
 import { sendPasswordResetEmail } from "firebase/auth";
@@ -16,9 +17,6 @@ function ForgotPassword() {
   const [errorMessage, setErrorMessage] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // =========================
-  // SEND RESET EMAIL
-  // =========================
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -27,17 +25,11 @@ function ForgotPassword() {
     setLoading(true);
 
     try {
-      await sendPasswordResetEmail(
-        auth,
-        email.trim()
-      );
+      await sendPasswordResetEmail(auth, email);
 
       setMessage(
-        "Password reset email sent. Please check your inbox."
+        "Password reset link sent. Please check your email inbox."
       );
-
-      setEmail("");
-
     } catch (error) {
       console.error(error);
 
@@ -47,7 +39,7 @@ function ForgotPassword() {
         );
       } else if (error.code === "auth/user-not-found") {
         setErrorMessage(
-          "No admin account was found with this email."
+          "No account found with this email."
         );
       } else {
         setErrorMessage(
@@ -61,15 +53,13 @@ function ForgotPassword() {
 
   return (
     <main className="flex min-h-screen items-center justify-center bg-[#F5F1E9] p-4 md:p-6">
+      <section className="flex w-full max-w-[520px] items-center justify-center rounded-[32px] bg-white px-6 py-16 shadow-[0_20px_60px_rgba(80,60,40,0.08)] md:px-12">
+        <div className="w-full max-w-[420px]">
 
-      <section className="w-full max-w-[520px] rounded-[32px] bg-white px-6 py-12 shadow-[0_20px_60px_rgba(80,60,40,0.08)] md:px-12 md:py-16">
-
-        <div className="mx-auto w-full max-w-[420px]">
-
-          {/* BACK TO LOGIN */}
+          {/* Back */}
           <Link
             to="/admin"
-            className="inline-flex items-center gap-2 text-xs font-medium text-[#89643D] transition hover:text-[#2C0901]"
+            className="inline-flex items-center gap-2 text-xs text-[#89643D] transition hover:text-[#2C0901]"
           >
             <ArrowLeft
               size={16}
@@ -79,10 +69,8 @@ function ForgotPassword() {
             Back to login
           </Link>
 
-
-          {/* HEADER */}
-          <div className="mt-10">
-
+          {/* Heading */}
+          <div className="mt-8">
             <p className="text-[10px] font-medium uppercase tracking-[0.3em] text-[#89643D]">
               Account Recovery
             </p>
@@ -92,139 +80,100 @@ function ForgotPassword() {
             </h1>
 
             <p className="mt-4 text-sm leading-6 text-[#77716A]">
-              Enter your admin email and we will send you a password reset link.
+              Enter your admin email and we will send you a link to reset your password.
             </p>
-
           </div>
 
+          {/* Form */}
+          <form
+            onSubmit={handleSubmit}
+            className="mt-10"
+          >
+            <label
+              htmlFor="email"
+              className="mb-2 block text-[10px] font-medium uppercase tracking-[0.15em] text-[#6D6963]"
+            >
+              Admin Email
+            </label>
 
-          {/* SUCCESS STATE */}
-          {message ? (
+            <div className="relative">
+              <Mail
+                size={18}
+                strokeWidth={1.5}
+                className="absolute left-4 top-1/2 -translate-y-1/2 text-[#9D968E]"
+              />
 
-            <div className="mt-10 text-center">
+              <input
+                id="email"
+                type="email"
+                value={email}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                  setErrorMessage("");
+                  setMessage("");
+                }}
+                placeholder="admin@example.com"
+                className="w-full rounded-xl border border-[#DED5CA] bg-[#F5F1E9]/50 py-4 pl-12 pr-4 text-sm text-[#171717] outline-none transition focus:border-[#8B653E] focus:bg-white"
+                required
+              />
+            </div>
 
-              <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-[#F5F1E9] text-[#89643D]">
-
+            {/* Success Message */}
+            {message && (
+              <div className="mt-5 flex items-start gap-3 rounded-xl border border-green-100 bg-green-50 px-4 py-3 text-green-700">
                 <CheckCircle2
-                  size={32}
+                  size={18}
                   strokeWidth={1.5}
+                  className="mt-0.5 shrink-0"
                 />
 
+                <p className="text-sm leading-6">
+                  {message}
+                </p>
               </div>
+            )}
 
-              <h2 className="mt-6 font-serif text-3xl font-light text-[#171717]">
-                Check Your Email
-              </h2>
+            {/* Error Message */}
+            {errorMessage && (
+              <div className="mt-5 flex items-start gap-3 rounded-xl border border-red-100 bg-red-50 px-4 py-3 text-red-600">
+                <AlertCircle
+                  size={18}
+                  strokeWidth={1.5}
+                  className="mt-0.5 shrink-0"
+                />
 
-              <p className="mx-auto mt-4 max-w-[340px] text-sm leading-6 text-[#77716A]">
-                {message}
-              </p>
+                <p className="text-sm leading-6">
+                  {errorMessage}
+                </p>
+              </div>
+            )}
 
-              <Link
-                to="/admin"
-                className="group mt-8 inline-flex items-center gap-3 rounded-xl bg-[#2C0901] px-6 py-4 text-sm font-medium text-white transition hover:bg-[#3D1006]"
-              >
-                Back to Login
+            {/* Submit */}
+            <button
+              type="submit"
+              disabled={loading}
+              className="group mt-6 flex w-full items-center justify-center gap-3 rounded-xl bg-[#2C0901] px-6 py-4 text-sm font-medium text-white transition-all duration-300 hover:shadow-[0_12px_30px_rgba(139,101,62,0.2)] disabled:cursor-not-allowed disabled:opacity-70"
+            >
+              {loading
+                ? "Sending..."
+                : "Send Reset Link"}
 
+              {!loading && (
                 <ArrowRight
-                  size={17}
+                  size={18}
                   strokeWidth={1.5}
                   className="transition-transform duration-300 group-hover:translate-x-1"
                 />
-
-              </Link>
-
-            </div>
-
-          ) : (
-
-            /* FORM */
-            <form
-              onSubmit={handleSubmit}
-              className="mt-10 space-y-5"
-            >
-
-              {/* EMAIL */}
-              <div>
-
-                <label
-                  htmlFor="email"
-                  className="mb-2 block text-[10px] font-medium uppercase tracking-[0.15em] text-[#6D6963]"
-                >
-                  Admin Email
-                </label>
-
-
-                <div className="relative">
-
-                  <Mail
-                    size={18}
-                    strokeWidth={1.5}
-                    className="absolute left-4 top-1/2 -translate-y-1/2 text-[#9D968E]"
-                  />
-
-
-                  <input
-                    id="email"
-                    type="email"
-                    value={email}
-                    onChange={(e) => {
-                      setEmail(e.target.value);
-                      setErrorMessage("");
-                    }}
-                    placeholder="admin@example.com"
-                    className="w-full rounded-xl border border-[#DED5CA] bg-[#F5F1E9]/50 py-4 pl-12 pr-4 text-sm text-[#171717] outline-none transition focus:border-[#89643D] focus:bg-white"
-                    required
-                  />
-
-                </div>
-
-              </div>
-
-
-              {/* ERROR */}
-              {errorMessage && (
-
-                <div className="rounded-xl border border-red-100 bg-red-50 px-4 py-3">
-
-                  <p className="text-sm text-red-600">
-                    {errorMessage}
-                  </p>
-
-                </div>
-
               )}
+            </button>
+          </form>
 
-
-              {/* BUTTON */}
-              <button
-                type="submit"
-                disabled={loading}
-                className="group flex w-full items-center justify-center gap-3 rounded-xl bg-[#2C0901] px-6 py-4 text-sm font-medium text-white transition hover:bg-[#3D1006] disabled:cursor-not-allowed disabled:opacity-70"
-              >
-
-                {loading
-                  ? "Sending Email..."
-                  : "Send Reset Link"}
-
-                {!loading && (
-                  <ArrowRight
-                    size={18}
-                    strokeWidth={1.5}
-                    className="transition-transform duration-300 group-hover:translate-x-1"
-                  />
-                )}
-
-              </button>
-
-            </form>
-
-          )}
+          <p className="mt-8 text-center text-xs leading-6 text-[#9D968E]">
+            A secure password reset link will be sent to your registered admin email.
+          </p>
 
         </div>
-
       </section>
-
     </main>
   );
 }

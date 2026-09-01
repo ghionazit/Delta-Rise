@@ -6,7 +6,7 @@ import logo from "../assets/images/logo.png";
 const links = [
   { name: "Home", path: "/" },
   { name: "Projects", path: "/projects" },
-  { name: "Services", path: "/services" },
+  { name: "Services", path: "/#services" },
   { name: "About", path: "/about" },
 ];
 
@@ -29,7 +29,7 @@ export default function Navbar() {
             className="h-auto w-[100px] object-contain md:w-[100px]"
           />
 
-          <span className="-ml-6 text-xl font-bold tracking-[-0.03em] !text-[#2C0901] md:text-xl">
+          <span className="-ml-6 text-xl font-bold tracking-[-0.03em] !text-[#371700] md:text-xl ">
             DELTA RISE
           </span>
         </Link>
@@ -50,13 +50,13 @@ export default function Navbar() {
           {/* Contact */}
           <Link
             to="/#contact"
-            className="ml-3 flex items-center gap-2 rounded-full bg-[#2C0901] px-6 py-3 text-sm font-medium tracking-wide !text-white transition-all duration-300 hover:scale-[1.02] hover:bg-[#2C0901]/90"
+            className="ml-3 flex items-center gap-2 rounded-full bg-[#371700] px-6 py-3 text-sm font-medium tracking-wide !text-white transition-all duration-300 hover:scale-[1.02] hover:bg-[#2C0901]/90"
           >
             <span className="!text-white">
               Contact
             </span>
-          </Link>
 
+          </Link>
         </div>
 
         {/* Mobile Menu Button */}
@@ -103,7 +103,6 @@ export default function Navbar() {
 
           {/* Mobile Navigation */}
           <div className="flex flex-col gap-5">
-
             {links.map((link, index) => (
               <Link
                 key={link.name}
@@ -120,14 +119,13 @@ export default function Navbar() {
                 </span>
               </Link>
             ))}
-
           </div>
 
           {/* Mobile Contact */}
           <Link
             to="/#contact"
             onClick={() => setOpen(false)}
-            className="mt-12 flex w-fit items-center gap-2 rounded-full bg-[#2C0901] px-7 py-3.5 text-sm font-medium !text-white"
+            className="mt-12 flex w-fit items-center gap-2 rounded-full bg-[#1b2909] px-7 py-3.5 text-sm font-medium !text-white"
           >
             <span className="!text-white">
               Contact

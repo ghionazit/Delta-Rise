@@ -36,7 +36,7 @@ function WhatWeDo() {
   return (
     <section
       id="services"
-      className="scroll-mt-24 bg-white px-6 py-4 md:px-10 md:py-16 lg:px-16"
+      className="scroll-mt-24 bg-[#Ffff] px-6 py-4 md:px-10 md:py-16 lg:px-16"
     >
       <div className="mx-auto max-w-[1500px]">
 

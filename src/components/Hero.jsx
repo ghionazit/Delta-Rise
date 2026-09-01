@@ -233,7 +233,7 @@ function Hero() {
                 text-white
                 transition-all
                 duration-300
-                hover:bg-[#2C0901]
+                hover:bg-[#a9501c]
                 hover:shadow-[0_12px_30px_rgba(139,101,62,0.25)]
               "
             >

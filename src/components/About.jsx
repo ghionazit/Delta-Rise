@@ -84,7 +84,7 @@ function About() {
                 w-[52%]
                 -translate-x-1/2
                 rounded-[26px]
-                bg-[#2C0901]
+                bg-[#a9501c]
                 p-6
                 text-[#F8F5EF]
                 shadow-[0_20px_45px_rgba(44,9,1,0.16)]
